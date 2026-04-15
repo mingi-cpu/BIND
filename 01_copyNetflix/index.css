@@ -1,0 +1,139 @@
+*{
+    color:white
+}
+body{
+    background-color: black;
+    margin: 0;
+}
+header a{
+    margin-top: 20px;
+    margin-left: 20px;
+    z-index: 2;
+}
+header{
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background:linear-gradient(to bottom,black,rgba(0, 0, 0, 0));
+    z-index: 2;
+}
+.nav{
+    display: flex;
+    list-style: none;
+    z-index: 2;
+}
+.nav li a{
+    color: rgba(255, 255, 255, 0.499);
+    text-decoration: none;
+    font-size: 15px;
+}
+.nav li{
+    margin: 0 3px;
+}
+.nav li a:hover{
+    color: white;
+}
+.mainimg img{
+    position: absolute;
+    width: 1500px;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+.button{
+    display: flex;
+    gap: 10px;
+}
+button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    border-radius: 3px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.content{
+    z-index: 2;
+}
+.miribogi{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+h3{
+    font-size: 60px;
+}
+.big{
+    font-size: 30px;
+}
+.small{
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.614);
+}
+.start i{
+    color: black;
+}
+.start{
+    background-color: white;
+    color: black;
+    width: 100px;
+    transition: 0.1s ease;
+}
+.start:hover{
+    background-color: rgb(155, 155, 155);
+}
+.tmi{
+    background-color: rgb(85, 85, 85);
+    transition: 0.1s ease;
+    width: 130px;
+}
+.tmi:hover{
+    background-color: rgb(44, 44, 44);
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    justify-content: center;
+    align-content: center;  
+}
+.maintext{
+    margin-left: 70px;
+    margin-top: 100px;
+    z-index: 2;
+}
+.good p{
+    margin: 35px;
+}
+.imglist{
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.imglist a img{
+    width: 300px;
+    transition:transform 0.2s ease;
+    overflow: hidden;
+    border-radius: 3px;
+}
+.imglist li:hover{
+    z-index:10;
+}
+.imglist li:hover img{
+    transform: scale(1.15);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.595);
+}
+.icon{
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    justify-content: center;
+}

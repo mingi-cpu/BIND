@@ -1,0 +1,322 @@
+body{
+    background-color: rgb(246, 246, 246 );
+}
+i{
+    width: 1em;
+}
+hr{
+    border:0.1px solid rgb(206, 206, 206);
+}
+*{
+    margin: 0;
+}
+header > .nav{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 3vw;
+    height: 45px;
+    align-items: center;
+}
+header > .nav > li> a{
+    color: black;
+    text-decoration: none;
+    font-size: 12px;
+}
+.logo{
+    color:rgb(62, 62, 62);
+    transition: color 0.2s ease-in-out;
+    cursor: pointer;
+}
+.logo:hover{
+    color: black;
+}
+.order{
+    background-color: white;
+    display: flex;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+.order>a{
+    color: rgb(58, 101, 228);
+    text-decoration: none;
+    margin-left: 10px;
+}
+.order>a:hover{
+    text-decoration: underline;
+}
+.store_head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    gap: 50vw;
+}
+.store_head > h2{
+    font-size: 70px;
+}
+.store_text{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 20px;
+}
+.store_text_head{
+    display: flex;
+    flex-direction:column ;
+    align-items: end;
+    gap: 3px;
+}
+.store_text_head > h4{
+    font-size: 25px;
+}
+.store_text > a{
+    display: flex;
+    gap: 5px;
+    font-size: 12px;
+    color: rgb(58, 101, 228);
+    text-decoration: none;
+}
+.store_text > a:hover p{
+    text-decoration:underline;
+}
+.store_text_head > a > i{
+    margin-left: 10px;
+}
+.store_content{
+    margin:80px 120px;
+}
+.store_content>ul{
+    display: flex;
+    list-style: none;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    gap: 30px;
+}
+.store_item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.store_item > p{
+    font-weight: 500;
+}
+.store_content_img{
+    width: 130px;
+}
+.new,.help,.apple_store,.link{
+    position: relative;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.new > h4, .help > h4,.apple_store > h4,.link>h4{
+    padding: 10px 150px;
+    font-weight: 700;
+    font-size: 25px;
+    color: gray;
+}
+.link>h4{
+    color: black;
+}
+.text_black{
+    color: black;
+}
+.new_content,.help_content{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    display: flex;
+    gap: 20px;
+    padding: 10px 150px;
+}
+.new_content_item,.help_content_box{
+    position: relative;
+    flex-shrink: 0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.new_content_item{
+    width: 400px;
+    height: 500px;
+}
+.help_content_box{
+    width: 500px;
+    height: 500px;
+}
+.new_content_item_text,.help_content_text{
+    position:absolute;
+    width: auto;
+    top: 0;
+    left: 30px;
+    right: 40px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    justify-content: center;
+}
+.new_content_item_text{
+    height: 40%;
+}
+.help_content_text{
+    height: 30%;
+}
+.help_content_text>p{
+    font-size: 12px;
+    font-weight: 600;
+    color: rgb(59, 59, 59);
+}
+.help_content_text>h5{
+    font-size: 26px;
+}
+.new_content_item_text h4{
+    font-size: 30px;
+}
+.new_content_item > .black{
+    color: white;
+}
+.new_content_item:hover ,.help_content_box:hover,.apple_store_content_box:hover{
+    transform:scale(1.01);
+    box-shadow: 0px 0px 5px rgb(180, 180, 180);
+}
+.new_content_item > img,.help_content_box>img{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border-radius: 20px;
+    z-index: 1;
+    box-shadow: 0px 0px 10px rgb(219, 219, 219);
+}
+.new_content_item>img{
+    width: 400px;
+}
+.help_content_box>img{
+    width: 500px;
+    height: 500px;
+}
+.new_text{
+    color: rgb(196, 121, 0);
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+}
+.old > .new_text{
+    visibility: hidden;
+}
+.apple_store_content,.link_button{
+    display: flex;
+    flex-direction: row;
+    padding: 50px 150px;
+    gap: 20px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+.apple_store_content_box{
+    background-color: white;
+    border-radius: 20px;
+    width: 253px;
+    height: 210px;
+    padding: 30px 30px 0px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    flex-shrink: 0;
+    transition: all 0.3s ease-in-out;
+}
+.blue_text{
+    color: rgb(43, 124, 255);
+}
+.link_button>button{
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 20px;
+}
+.link_button>button:hover{
+    color: white;
+    background-color: black;
+}
+footer > p{
+    margin: 30px 300px;
+    font-size: 12px;
+    color: gray;
+    word-break: keep-all;
+}
+hr{
+    margin: 15px 300px;
+}
+.foot_head{
+    font-size: 12px;
+    color: rgb(70, 70, 70);
+    margin-left: 300px;
+}
+.foot_main{
+    margin: 30px 300px;
+    display: flex;
+    gap: 100px;
+}
+.foot_main>ul{
+    list-style: none;
+    color: rgb(75, 75, 75);
+    font-size: 12px;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    padding: 0;
+    gap: 10px;
+}
+.foot_main>ul>li>strong{
+    color: black;
+}
+.foot_main>ul>li:hover,.foot_main>ul>li>strong:hover{
+    text-decoration:underline;
+}
+footer>.shopping>a{
+    color: rgb(34, 117, 218);
+}
+.foot_foot{
+    display: flex;
+    font-size: 12px;
+    margin: 30px 300px;
+}
+.foot_foot_text{
+    color: gray;
+    margin-right: 30px;
+}
+.foot_link_box>a,.foot_lang>a,.foot_link_box{
+    color: rgb(79, 79, 79);
+    text-decoration: none;
+}
+.foot_lang{
+    margin-left: auto;
+}
+.foot_link_box>a:hover,.foot_lang>a:hover{
+    border-bottom: 1px solid black;
+}
+.aiQA{
+    position: fixed;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(159, 205, 255);
+    top: 90%;
+    left: 95%;
+    overflow: hidden;
+    z-index: 100;
+    cursor: pointer;
+}
+.aiQA:hover{
+    background-color: rgb(191, 222, 255);
+}
+.aiQA>img{
+    width: 60px;
+}
