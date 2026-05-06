@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mingi quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+    <h1>mingi quiz</h1>
+    <h5 id="clock"></h5>
+    <h5 class="hidden" id="realclock"></h5>
+    <p id="q"></p>
+    <div id="form">
+        <button id="o">O</button>
+        <button id="x">X</button>
+    </div>
+    <p id="answer_count">맞춘개수</p>
+    <p id="answer">0</p>
+    <script>
+        const question = document.querySelector("#q");
+        const oButton = document.querySelector("#o")
+        const xButton = document.querySelector("#x")
+        const clock = document.querySelector("#clock");
+        const answerNum=document.querySelector("#answer")
+        const realClock = document.querySelector("#realclock")
+        let answerCount=0
+        let seconds = 10;
+        let miliSeconds=99;
+        let quizNum=0;
+        const HIDDEN = 'hidden'
+        function time(){
+            if (seconds<=0){
+                seconds=10;
+                miliSeconds=99;
+                quiz=quizes[++quizNum]
+                question.innerHTML=quiz.q
+            }
+            if (miliSeconds<=0){
+                seconds--;
+                miliSeconds=99;
+            }
+            clock.innerHTML=`${String(seconds).padStart(2,0)}.${String(miliSeconds--).padStart(2,0)}`;
+        }
+        time()
+        setInterval(time,10);
+        function end(){
+            clock.className=HIDDEN;
+            oButton.className=HIDDEN;
+            xButton.className=HIDDEN;
+            realClock.innerHTML=clock.innerHTML
+            realClock.className=''
+        }
+        function onClickO(){
+            if(quizNum>=quizes.length-2){
+                end()
+            }
+            if(quiz.a){
+                answerCount++;
+                answerNum.innerHTML=answerCount;
+            }
+            console.log('o')
+            console.log(quiz.a)
+            seconds+=10;
+            quiz=quizes[++quizNum]
+            question.innerHTML=quiz.q;
+        }
+        function onClickX(){
+            if(quizNum>=quizes.length-2){
+                end()
+            }
+            if(!quiz.a){
+                answerCount++;
+                answerNum.innerHTML=answerCount;
+            }
+            console.log('x')
+            console.log(quiz.a)
+            seconds+=10;
+            quiz=quizes[++quizNum]
+            question.innerHTML=quiz.q
+        }
+        const quizes=[
+            {
+                q:'HTML안에서 JS를 쓰기위한 태그는 link다?',
+                a:false
+            },
+            {
+                q:'JS에서 배열값을 삭제하고 싶을때 사용하는 코드는 push다?',
+                a:false
+            },
+            {
+                q:'JS 에서 태그의 id를 통하여 태그를 찾는 명령어는 getElementById이다?',
+                a:true
+            },
+            {
+                q:'JS 에서 변수를 상수 저장하고 싶을때 사용하는 코드는 const다?',
+                a:true
+            },
+            {
+                q:`끝`
+            }
+        ]
+        let quiz=quizes[quizNum]
+        question.innerHTML=quiz.q
+        oButton.addEventListener('click',onClickO)
+        xButton.addEventListener('click',onClickX)
+    </script>
+</body>
+</html>

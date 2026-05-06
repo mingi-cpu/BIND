@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    text-align: center;
+}
+body{
+    background-image: url(background.jpg);
+    background-size:cover;
+}
+.hidden{
+    display: none;
+}
+h1{
+    padding: 20px 0;
+    color: rgb(61, 167, 134);
+    background-color: rgb(246, 246, 246);
+}
+#clock,#realclock{
+    margin-top: 100px;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.832);
+}
+#q{
+    color: white;
+    width: 1000px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgba(0, 128, 0, 0.281);
+    margin: 30px auto;
+    font-size: 20px;
+}
+#form{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+}
+button{
+    background-color: white;
+    font-size: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+}
+#o{
+    color: blue;
+}
+#x{
+    color: red;
+}
+#o:hover{
+    background-color: blue;
+    color: white;
+}
+#x:hover{
+    background-color: red;
+    color: white;
+}
+#answer_count{
+    color: white;
+    margin-top: 50px;
+    font-size: 30px;
+}
+#answer{
+    color: rgb(255, 255, 255);
+    margin-top: 20px;
+    font-size: 50px;
+}

@@ -26,8 +26,11 @@
         todolist.appendChild(li);
         input.value="";
     };
+    function removeTodo(){
+        const list = document.querySelectorAll("li");
+        for (const li of list){li.remove()};
+    }
     button1.addEventListener("click",addTodo);
     button2.addEventListener("click",removeTodo);
-
 </script>
 </html>
