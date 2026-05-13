@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(235, 235, 235);
+}
+#movie_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+    gap: 30px;
+    align-items: center;
+}
+h1{
+    margin: 20px;
+    color: red;
+}
+.box{
+    border-radius: 10px;
+    width: 300px;
+    position: relative;
+    color: white;
+    padding: 20px;
+    transition: all ease-in-out 0.2s;
+    background-color: black;
+}
+.box:hover{
+    scale: 1.02;
+    box-shadow: 0px 0px 5px rgb(43, 43, 43);
+}
+.box h5{
+    position: relative;
+    font-size: 30px;
+    height: 50px;
+}
+.box .long{
+    font-size: 20px;
+}
+.box p{
+    margin-bottom: 10px;
+}
+img{
+    width: 100%;
+}
