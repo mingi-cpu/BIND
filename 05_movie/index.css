@@ -20,6 +20,7 @@ h1{
 .box{
     border-radius: 10px;
     width: 300px;
+    height: 600px;
     position: relative;
     color: white;
     padding: 20px;
