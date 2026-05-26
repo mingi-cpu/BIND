@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Data</h1>
+    <p id="greeting"></p>
+    <script>
+        localStorage.setItem(
+            "accessToken",
+            "sk_530faa6171a929e97d63c1f36e4ee88f7bea8b0d19c979d1"
+        );
+        const accessToken = localStorage.getItem("accessToken");
+        const fetchData=()=>{
+            return fetch(
+                "https://free.mockerapi.com/mock/ab33230a-f900-4688-a3e1-39e31ee6af2f",
+                {
+                    method:"GET",
+                    headers:{
+                        Authorization:`Bearer ${accessToken}`}
+                }
+            ).then((response)=>response.json())
+            .catch((error)=>{
+                console.error("Error:",error);
+            })
+        };
+        fetchData().then((data)=>{
+            const greeting = document.getElementById("greeting");
+            greeting.innerHTML=data.message;
+        });
+    </script>
+</body>
+</html>
