@@ -1,4 +1,4 @@
-import SERVER_URL from "./env";
+import SERVER_URL from "./.gitignore/env.js";
 const userInput = document.querySelector("#userInput");
 const titleInput = document.querySelector("#titleInput");
 const postButton = document.querySelector("#post-button");
@@ -9,7 +9,7 @@ async function onClickPostButton(){
     }
     console.log(postData)
     try {
-        const response = await fetch(`${SERVER_URL}/api/v1/posts`,{
+        const response = await fetch(`${SERVER_URL}api/v1/posts`,{
         method:"POST",
         headers: {
         'Content-Type': 'application/json',

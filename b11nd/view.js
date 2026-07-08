@@ -1,4 +1,4 @@
-import SERVER_URL from "./env";
+import SERVER_URL from "./.gitignore/env.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const POST_ID = urlParams.get('id') || "1"; 
@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 // [API] 게시글 상세 조회
 async function loadPostData() {
     try {
-        const response = await fetch(`${SERVER_URL}/api/v1/posts/${POST_ID}`,{
+        const response = await fetch(`${SERVER_URL}api/v1/posts/${POST_ID}`,{
             method: 'GET',
             credentials:"include"
         });
@@ -52,8 +52,8 @@ async function loadPostData() {
         if (post.data.isWriter){
             console.log('글쓴이');
             editDel.innerHTML=
-            `<button id="editButton" onclick=tryEditData()>수정</button>
-            <button id="delButton" onclick = removePostData()>삭제</button>`
+            `<button id="editButton" data-action="edit-post">수정</button>
+            <button id="delButton" data-action="delete-post">삭제</button>`
         }else{
             console.log('노글쓴이');
             editDel.innerHTML=``
@@ -65,7 +65,7 @@ async function loadPostData() {
 // [API] 댓글 조회
 async function loadCommentsData() {
     try {
-        const response = await fetch(`${SERVER_URL}/api/v1/posts/${POST_ID}/comments`,{
+        const response = await fetch(`${SERVER_URL}api/v1/posts/${POST_ID}/comments`,{
             method:"GET",
             credentials:"include"
         });
@@ -88,7 +88,7 @@ commentBtn.addEventListener('click', async () => {
     const commentText = commentInput.value.trim();
     if (!commentText) return;
     try {
-        const response = await fetch(`${SERVER_URL}/api/v1/posts/${POST_ID}/comments`, {
+        const response = await fetch(`${SERVER_URL}api/v1/posts/${POST_ID}/comments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ content: commentText }),
@@ -120,7 +120,7 @@ rightInfo.addEventListener('click', async (e) => {
     if (likeBtn) {
         try {
             // 💡 [수정 포인트] 상태 상관없이 무조건 'POST'를 날려서 서버가 알아서 토글(취소)하게 만듭니다.
-            const response = await fetch(`${SERVER_URL}/api/v1/posts/comments/${commentId}/likes`, { 
+            const response = await fetch(`${SERVER_URL}api/v1/posts/comments/${commentId}/likes`, { 
                 method: 'POST', // 백엔드 명세서 기준 토글 방식
                 credentials: "include"
             });
@@ -156,7 +156,7 @@ rightInfo.addEventListener('click', async (e) => {
     if (target.classList.contains('delete-btn')) {
         if (confirm("정말 이 댓글을 삭제할 거야?")) {
             try {
-                await fetch(`${SERVER_URL}/api/v1/posts/${POST_ID}/comments/${commentId}`, {
+                await fetch(`${SERVER_URL}api/v1/posts/${POST_ID}/comments/${commentId}`, {
                     method: 'DELETE',
                     credentials: "include"
                 });
@@ -176,7 +176,7 @@ rightInfo.addEventListener('click', async (e) => {
         const newText = prompt("댓글을 수정해봐:", currentText);
         if (newText && newText.trim() !== "") {
             try {
-                await fetch(`${SERVER_URL}/api/v1/posts/${POST_ID}/comments/${commentId}`, {
+                await fetch(`${SERVER_URL}api/v1/posts/${POST_ID}/comments/${commentId}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     credentials: "include",
@@ -190,9 +190,23 @@ rightInfo.addEventListener('click', async (e) => {
         }
     }
 });
+editDel.addEventListener("click", (event) => {
+    const actionButton = event.target.closest?.("button[data-action]");
+    if (!actionButton) return;
+
+    if (actionButton.dataset.action === "edit-post") {
+        tryEditData();
+    }
+    if (actionButton.dataset.action === "delete-post") {
+        removePostData();
+    }
+    if (actionButton.dataset.action === "complete-edit") {
+        editData();
+    }
+});
 async function removePostData() {
     try{
-        const response = await fetch(`${SERVER_URL}/api/v1/posts/${POST_ID}`,{
+        const response = await fetch(`${SERVER_URL}api/v1/posts/${POST_ID}`,{
             method:'DELETE',
             credentials:"include"
         })
@@ -218,14 +232,14 @@ async function editData() {
         return
     }
     editDel.innerHTML=
-    `<button id="editButton" onclick=tryEditData()>수정</button>
-    <button id="delButton" onclick = removePostData()>삭제</button>`
+    `<button id="editButton" data-action="edit-post">수정</button>
+    <button id="delButton" data-action="delete-post">삭제</button>`
     const postData = {
         title:document.querySelector('#postTitle input').value,
         content:document.querySelector('#left-info > p textarea').value
     }
     try{
-        const response = await fetch(`${SERVER_URL}/api/v1/posts/${POST_ID}`,{
+        const response = await fetch(`${SERVER_URL}api/v1/posts/${POST_ID}`,{
             method:"PUT",
             headers: {
             'Content-Type': 'application/json',
@@ -249,8 +263,8 @@ async function editData() {
 }
 async function tryEditData(){
     editDel.innerHTML=
-    `<button id="editedButton" onclick=editData()>수정완료</button>
-    <button id="delButton" onclick = removePostData()>삭제</button>` 
+    `<button id="editedButton" data-action="complete-edit">수정완료</button>
+    <button id="delButton" data-action="delete-post">삭제</button>` 
     document.getElementById('postTitle').innerHTML = `<input type="text" value=${document.getElementById('postTitle').innerText} placeholder="title..." id="titleInput2">`;
     document.querySelector('#left-info > p').innerHTML = `<textarea id="userInput2" placeholder="what do you want talk about?">${document.querySelector('#left-info > p').innerText}</textarea>`;
 }
@@ -258,13 +272,13 @@ async function tryEditData(){
 mainLikeIcon.addEventListener('click', async () => {
     try {
         // DELETE 없애고 POST로만 토글 (명세서 기준)
-        const response = await fetch(`${SERVER_URL}/api/v1/posts/${POST_ID}`,{
+        const response = await fetch(`${SERVER_URL}api/v1/posts/${POST_ID}`,{
             method: 'GET',
             credentials:"include"
         });
         if (!response.ok) throw new Error("글 불러오기 실패");
         const post = await response.json();
-        const response2 = await fetch(`${SERVER_URL}/api/v1/posts/${POST_ID}/likes`, {
+        const response2 = await fetch(`${SERVER_URL}api/v1/posts/${POST_ID}/likes`, {
             method: post.data.liked?'DELETE':'POST',
             credentials: "include"
         });

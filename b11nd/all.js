@@ -1,4 +1,4 @@
-import SERVER_URL from "./env";
+import SERVER_URL from "./.gitignore/env.js";
 const headerUserInfo = document.querySelector("#headerUserInfo");
 const moreUserInfo = document.querySelector("#moreUserInfo");
 const moreUserInfoName = document.querySelector("#moreUserInfoName");
@@ -17,7 +17,7 @@ function clickProfile(){
 }
 async function logOut(){
     console.log("로그아웃")
-    const response = await fetch(`${SERVER_URL}/auth/logout`,{
+    const response = await fetch(`${SERVER_URL}auth/logout`,{
         method:"POST",
         credentials: 'include',
     });
@@ -25,16 +25,30 @@ async function logOut(){
     window.location.href = 'main.html';
 }
 if(localStorage.getItem("isLogin")!=="notLogin" || !localStorage.getItem("isLogin")){
-    headerUserInfo.innerHTML=`<img src="images/profile.svg" onclick = clickProfile() alt="프로필">`;
+    headerUserInfo.innerHTML=`<img src="images/profile.svg" id="profileButton" alt="프로필">`;
     moreUserInfoName.innerHTML = localStorage.getItem("isLogin");
 }else{
     headerUserInfo.innerHTML=`
     <a href="login.html">Log in</a>
     <a href="signup.html">Sign up</a>`;
 }
+
+const profileButton = document.querySelector("#profileButton");
+const writeButton = document.querySelector("#writeButton");
+
+profileButton?.addEventListener("click", clickProfile);
+logOutButton?.addEventListener("click", (event) => {
+  event.preventDefault();
+  logOut();
+});
+writeButton?.addEventListener("click", (event) => {
+  event.preventDefault();
+  onClickWrite();
+});
+
 async function refreshToken() {
   try {
-    const response = await fetch(`${SERVER_URL}/auth/refresh`, {
+    const response = await fetch(`${SERVER_URL}auth/refresh`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json', 

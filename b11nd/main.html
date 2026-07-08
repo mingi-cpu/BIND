@@ -12,7 +12,7 @@
     <header>
         <a id="homeLink" href=""><h1><img src="images/logo.svg" alt="logo">PokeForum</h1></a>
         <form>
-            <input type="text" placeholder="Search...">
+            <input ltype="text" placeholder="Search...">
             <button type="submit">
                 <svg width="34" height="36" viewBox="0 0 34 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.4473 0C25.5311 0 32.8955 7.37425 32.8955 16.4707C32.8954 20.5391 31.4208 24.262 28.9795 27.1357L33.5527 32.9404L33.5508 32.9414C33.7578 33.2169 33.8828 33.5584 33.8828 33.9297C33.8826 34.839 33.1463 35.5759 32.2383 35.5762C31.7287 35.5762 31.2734 35.3438 30.9717 34.9795L30.9707 34.9814L26.5977 29.4316C23.802 31.63 20.2774 32.9414 16.4473 32.9414C7.36384 32.941 0.00014237 25.5668 0 16.4707C0 7.37448 7.36375 0.000383464 16.4473 0ZM16.4473 3.29395C9.18052 3.29432 3.28906 9.19377 3.28906 16.4707C3.28921 23.7475 9.1806 29.6471 16.4473 29.6475C23.7142 29.6475 29.6053 23.7477 29.6055 16.4707C29.6055 9.19354 23.7143 3.29395 16.4473 3.29395Z" fill="white"/>
@@ -24,7 +24,7 @@
         <div id="moreUserInfo" class="inVisible">
             <img src="images/profile.svg" alt="프로필">
             <p id="moreUserInfoName"></p>
-            <a href="#" onclick = logOut() id = "logOutButton">log out</a>
+            <a href="#" id="logOutButton">log out</a>
         </div>
     </header>
     <main>
@@ -100,9 +100,9 @@
             <ul id="pagination">
             </ul>
         </nav>
-        <a id="writeButton" href="#" onclick=onClickWrite()>+ write</a>
+        <a id="writeButton" href="#">+ write</a>
     </main>
-    <script src="main.js"></script>
-    <script src="all.js"></script>
+    <script type="module" src="main.js"></script>
+    <script type="module" src="all.js"></script>
 </body>
 </html>

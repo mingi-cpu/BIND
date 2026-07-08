@@ -1,8 +1,8 @@
-import SERVER_URL from "./env";
+import SERVER_URL from "./.gitignore/env.js";
 const postWrap = document.querySelector("#boxWrap");
 const pagination = document.querySelector("#pagination");
 async function getForumPosts(pageNumber) {
-  const serverUrl = `${SERVER_URL}/api/v1/posts?page=${pageNumber}`;
+  const serverUrl = `${SERVER_URL}api/v1/posts?page=${pageNumber}`;
   try {
     const response = await fetch(serverUrl);
     if (!response.ok) {
@@ -54,25 +54,35 @@ async function loadPage(pageNumber) {
     pagination.innerHTML=""
     renderPosts(data.data.content); 
     const beforeButton = document.createElement("li");
-    beforeButton.innerHTML=`<a href="#" onclick=loadPage(${pageNumber-1})>«</a>`
+    beforeButton.innerHTML=`<a href="#" data-page="${pageNumber-1}">«</a>`
     if (!data.data.first){
         pagination.appendChild(beforeButton)
     }
     for(let i=0;i<data.data.totalPages;i++){
         const li = document.createElement("li");
-        li.innerHTML=`<a href="#" onclick=loadPage(${i})>${i+1}</a>`
+        li.innerHTML=`<a href="#" data-page="${i}">${i+1}</a>`
         if(i==pageNumber){
             li.id='nowPage';
         }
         pagination.appendChild(li)
     }
     const afterButton = document.createElement("li");
-    afterButton.innerHTML=`<a href="#" onclick=loadPage(${pageNumber+1})>»</a>`
+    afterButton.innerHTML=`<a href="#" data-page="${pageNumber+1}">»</a>`
     if (!data.data.last){
         pagination.appendChild(afterButton)
     }
   }
 };
 
-loadPage(0);
+pagination.addEventListener("click", (event) => {
+  const pageLink = event.target.closest?.("a[data-page]");
+  if (!pageLink) return;
 
+  event.preventDefault();
+  const pageNumber = Number(pageLink.dataset.page);
+  if (!Number.isNaN(pageNumber)) {
+    loadPage(pageNumber);
+  }
+});
+
+loadPage(0);
