@@ -1,3 +1,4 @@
+import SERVER_URL from "./env";
 // 로그인 폼과 입력 요소 가져오기
 const loginForm = document.querySelector('.form');
 const usernameInput = loginForm.querySelector('input[placeholder="username"]');
@@ -5,8 +6,6 @@ const passwordInput = loginForm.querySelector('input[placeholder="password"]');
 localStorage.setItem("isLogin","notLogin")
 const accessToken = "accessToken"
 // 서버 주소
-const BASE_URL = 'http://localhost:8080';
-
 // 로그인 버튼 클릭 시 실행
 loginForm.addEventListener('submit', async (event) => {
   // 새로고침 방지
@@ -24,7 +23,7 @@ loginForm.addEventListener('submit', async (event) => {
 
   try {
     // 임시 서버에서 로그인 결과 요청
-    const response = await fetch(`${BASE_URL}/auth/login`, {
+    const response = await fetch(`${SERVER_URL}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

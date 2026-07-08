@@ -1,9 +1,10 @@
+import SERVER_URL from "./env";
 const postWrap = document.querySelector("#boxWrap");
 const pagination = document.querySelector("#pagination");
 async function getForumPosts(pageNumber) {
-  const serverUrl = `http://localhost:8080/api/v1/posts?page=${pageNumber}`;
+  const serverUrl = `${SERVER_URL}/api/v1/posts?page=${pageNumber}`;
   try {
-    const response = await fetch(serverUrl);
+    const response = await fetch(SERVER_URL);
     if (!response.ok) {
       throw new Error(`서버 에러 발생: ${response.status}`);
     }

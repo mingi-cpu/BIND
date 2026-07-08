@@ -1,3 +1,4 @@
+import SERVER_URL from "./env";
 const headerUserInfo = document.querySelector("#headerUserInfo");
 const moreUserInfo = document.querySelector("#moreUserInfo");
 const moreUserInfoName = document.querySelector("#moreUserInfoName");
@@ -16,7 +17,7 @@ function clickProfile(){
 }
 async function logOut(){
     console.log("로그아웃")
-    const response = await fetch(`http://localhost:8080/auth/logout`,{
+    const response = await fetch(`${SERVER_URL}/auth/logout`,{
         method:"POST",
         credentials: 'include',
     });
@@ -33,7 +34,7 @@ if(localStorage.getItem("isLogin")!=="notLogin" || !localStorage.getItem("isLogi
 }
 async function refreshToken() {
   try {
-    const response = await fetch(`http://localhost:8080/auth/refresh`, {
+    const response = await fetch(`${SERVER_URL}/auth/refresh`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json', 

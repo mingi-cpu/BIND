@@ -1,3 +1,4 @@
+import SERVER_URL from "./env";
 // 회원가입 폼과 입력 요소 가져오기
 const signupForm = document.querySelector('.form');
 const usernameInput = signupForm.querySelector('input[placeholder="username"]');
@@ -42,7 +43,7 @@ signupForm.addEventListener('submit', async (event) => {
 
   try {
     // 회원가입 요청
-    const response = await fetch('http://localhost:8080/auth/signup', {
+    const response = await fetch(`${SERVER_URL}/auth/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

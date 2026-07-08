@@ -1,4 +1,4 @@
-const SERVER_URL = "http://localhost:8080"; 
+import SERVER_URL from "./env";
 
 const urlParams = new URLSearchParams(window.location.search);
 const POST_ID = urlParams.get('id') || "1"; 
