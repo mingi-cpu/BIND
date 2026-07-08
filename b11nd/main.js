@@ -4,7 +4,7 @@ const pagination = document.querySelector("#pagination");
 async function getForumPosts(pageNumber) {
   const serverUrl = `${SERVER_URL}/api/v1/posts?page=${pageNumber}`;
   try {
-    const response = await fetch(SERVER_URL);
+    const response = await fetch(serverUrl);
     if (!response.ok) {
       throw new Error(`서버 에러 발생: ${response.status}`);
     }
