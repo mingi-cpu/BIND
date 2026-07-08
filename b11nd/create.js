@@ -1,4 +1,4 @@
-import SERVER_URL from "./.gitignore/env.js";
+import SERVER_URL from "./env.js";
 const userInput = document.querySelector("#userInput");
 const titleInput = document.querySelector("#titleInput");
 const postButton = document.querySelector("#post-button");

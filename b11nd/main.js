@@ -1,4 +1,4 @@
-import SERVER_URL from "./.gitignore/env.js";
+import SERVER_URL from "./env.js";
 const postWrap = document.querySelector("#boxWrap");
 const pagination = document.querySelector("#pagination");
 async function getForumPosts(pageNumber) {

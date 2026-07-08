@@ -1,4 +1,4 @@
-import SERVER_URL from "./.gitignore/env.js";
+import SERVER_URL from "./env.js";
 // 로그인 폼과 입력 요소 가져오기
 const loginForm = document.querySelector('.form');
 const usernameInput = loginForm.querySelector('input[placeholder="username"]');

@@ -1,4 +1,4 @@
-import SERVER_URL from "./.gitignore/env.js";
+import SERVER_URL from "./env.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const POST_ID = urlParams.get('id') || "1"; 

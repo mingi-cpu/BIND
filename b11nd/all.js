@@ -1,4 +1,4 @@
-import SERVER_URL from "./.gitignore/env.js";
+import SERVER_URL from "./env.js";
 const headerUserInfo = document.querySelector("#headerUserInfo");
 const moreUserInfo = document.querySelector("#moreUserInfo");
 const moreUserInfoName = document.querySelector("#moreUserInfoName");
